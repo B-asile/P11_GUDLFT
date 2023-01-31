@@ -11,7 +11,7 @@ def client():
 
 
 def test_user_journey(client):
-    """Test de l'achat d'une place par un client"""
+    """Test user purchase"""
 
     competition_list = server.loadCompetitions()
     club_list = server.loadClubs()
