@@ -12,9 +12,9 @@ def client():
 @pytest.fixture
 def clubs():
     return [
-        {'name': 'Test Club 1', 'email': 'test1@email', 'points': '20'},
-        {'name': 'Test Club 2', 'email': 'test2@email', 'points': '50'},
-        {'name': 'Test Club 3', 'email': 'test3@email', 'points': '80'},
+        {'name': 'Test Club 1', 'email': 'test1@email', 'points': '10'},
+        {'name': 'Test Club 2', 'email': 'test2@email', 'points': '5'},
+        {'name': 'Test Club 3', 'email': 'test3@email', 'points': '20'},
     ]
 
 
