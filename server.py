@@ -66,7 +66,7 @@ def purchasePlaces():
     except:
         flash("Something went wrong-please try again")
         return redirect(url_for('show_summary'))
-    if placesRequired > 12 or int(competition['numberOfPlaces']):
+    if placesRequired > 12 or placesRequired > int(competition['numberOfPlaces']):
         flash("You can't purchase that many places")
     elif placesRequired > point_club:
         flash("You don't have enough points")
