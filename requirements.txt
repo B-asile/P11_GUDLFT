@@ -8,3 +8,4 @@ pyparsing==3.0.9
 pytest==7.2.1
 pytest-flask==1.2.0
 pytest-mock==3.10.0
+selenium==4.8.0
