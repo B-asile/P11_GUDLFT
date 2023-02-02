@@ -21,18 +21,3 @@ def test_club_refresh_points(client):
     assert response.status_code == 200
     assert before_points != club['points']
 
-"""
-def test_competition_refresh_places(client):
-    club = server.clubs[0]['name']
-    competition = server.competitions[0]
-    before_points = competition["numberOfPlaces"]
-    response = client.post('/purchasePlaces',
-                           data={
-                               'club': club,
-                               'competition': competition['name'],
-                               'numberOfPlaces': competition['numberOfPlaces'],
-                               'places': 3,
-                           })
-    assert response.status_code == 200
-    assert competition["numberOfPlaces"] != before_points
-"""
