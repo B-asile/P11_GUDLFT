@@ -41,16 +41,14 @@
      
     * competitions.json - list of competitions
     * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
-
+   
 5. Testing
 
+   The framework used to perform unit and functional tests is [PyTest](https://docs.pytest.org/en/7.2.x/). To launch the tests you must install the pytest with the command `pip install pytest` and type the commande `python -m pytest` if you want to launch a particular file `python -m pytest/file_name`
+
+   If you want to measure test coverage you need to install [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) with commande `pip install coverage` and launch coverage with the commande `coverage run -m pytest`
    
-   the framework used to perform unit and functional tests is [PyTest](https://docs.pytest.org/en/7.2.x/). To launch the tests you must install the pytest with the command <code>pip install pytest<code> and type the commande <code>python -m pytest<code> if you want to launch a particular file <code>python -m pytest/file_name<code>
-   
-   If you want to measure test coverage you need to install [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) with commande <code>pip install coverage<code> and launch coverage with the commande <code>coverage run -m pytest<code>
-   
-   you also have the possibility to generate an html file for more readability of the results with the command <code>coverage html<code>
-   
-    
-   for integration tests you have to install [Locust](https://locust.io/) (load testing tool allowing to write and play test scenarios in Python) with the command <code>pip install locust<code> and run with <code>locust<code>. For the integration tests to work you need to run Flask and locust in an annex terminal.  
+   you also have the possibility to generate an html file for more readability of the results with the command `coverage html`
+
+   for integration tests you have to install [Locust](https://locust.io/) (load testing tool allowing to write and play test scenarios in Python) with the command `pip install locust` and run with `locust`. For the integration tests to work you need to run Flask and locust in an annex terminal.  
 

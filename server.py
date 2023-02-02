@@ -47,7 +47,7 @@ def book(competition,club):
         foundClub = [c for c in clubs if c['name'] == club][0]
         foundCompetition = [c for c in competitions if c['name'] == competition][0]
         return render_template('booking.html', club=foundClub, competition=foundCompetition)
-    except IndexError:
+    except:
         flash("Something went wrong-please try again")
         return render_template('welcome.html', club=club, competitions=competitions)
 
@@ -55,7 +55,7 @@ def book(competition,club):
 @app.route('/purchasePlaces',methods=['POST'])
 def purchasePlaces():
     """
-    added of except if the places requested exceed 12, the number of places available and the points required.
+    add except if the places requested exceed 12, the number of places available and the points required.
     Decrement of points for the club and the rest of available places.
     """
     try:
