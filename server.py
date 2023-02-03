@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+
 from flask import Flask,render_template,request,redirect,flash,url_for
 
 
@@ -35,7 +37,7 @@ def showSummary():
     except IndexError:
         flash("Something went wrong-please try again")
         return redirect(url_for('index'))
-    return render_template('welcome.html', club=club, competitions=competitions)
+    return render_template('welcome.html', club=club, competitions=competitions, current_datetime = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 @app.route('/book/<competition>/<club>')
@@ -56,26 +58,30 @@ def book(competition,club):
 def purchasePlaces():
     """
     add except if the places requested exceed 12, the number of places available and the points required.
-    Decrement of points for the club and the rest of available places.
+    Decrement of points for the club and the rest of available places & implementation of Datetime for
+    the impossibility to book on a past competition.
     """
     try:
         competition = [c for c in competitions if c['name'] == request.form['competition']][0]
         club = [c for c in clubs if c['name'] == request.form['club']][0]
         placesRequired = int(request.form['places'])
         point_club = int(club['points'])
+        current_datetime = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
     except:
         flash("Something went wrong-please try again")
         return redirect(url_for('show_summary'))
     if placesRequired > 12 or placesRequired > int(competition['numberOfPlaces']):
-        flash("You can't purchase that many places")
+        flash("You can't purchase so many places")
     elif placesRequired > point_club:
         flash("You don't have enough points")
+    elif current_datetime > competition['date']:
+        flash("Booking closed")
     else:
         club['points'] = point_club - placesRequired
         competition['numberOfPlaces'] = (int(competition['numberOfPlaces']) - placesRequired)
         flash('Great-booking complete!')
-        return render_template('welcome.html', club=club, competitions=competitions)
-    return render_template('welcome.html', club=club, competitions=competitions)
+        return render_template('welcome.html', club=club, competitions=competitions, current_datetime = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    return render_template('welcome.html', club=club, competitions=competitions, current_datetime = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 # TODO: Add route for points display
